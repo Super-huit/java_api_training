@@ -1,11 +1,12 @@
-package fr.lernejo.navy_battle;
+package fr.lernejo.server;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class CustomPingHandler implements HttpHandler {
+public class PingHttpHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
@@ -15,4 +16,5 @@ public class CustomPingHandler implements HttpHandler {
             os.write(body.getBytes());
         }
     }
+
 }
