@@ -1,4 +1,4 @@
-package fr.lernejo.client;
+package fr.lernejo.navy_battle;
 
 import java.io.IOException;
 import java.net.URI;

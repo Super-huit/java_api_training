@@ -1,8 +1,6 @@
-package fr.lernejo.server;
+package fr.lernejo.navy_battle;
 
 import com.sun.net.httpserver.HttpServer;
-import fr.lernejo.client.Client;
-import fr.lernejo.navy_battle.FireHttpHandler;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

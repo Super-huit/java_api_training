@@ -3,7 +3,6 @@ package fr.lernejo.navy_battle;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-import fr.lernejo.server.Server;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -15,15 +14,6 @@ public class FireHttpHandler implements HttpHandler {
 
     public FireHttpHandler(Server srv) {
         this.srv = srv;
-    }
-
-    public void sendResponse(HttpExchange exchange, String response,int code) throws IOException {
-        exchange.getResponseHeaders().add("Accept", "application/json");
-        exchange.getResponseHeaders().add("Content-Type", "application/json");
-        exchange.sendResponseHeaders(code, response.length());
-        try (OutputStream os = exchange.getResponseBody()) {
-            os.write(response.getBytes());
-        }
     }
 
     @Override
@@ -39,4 +29,15 @@ public class FireHttpHandler implements HttpHandler {
             }
         }
     }
+    
+    public void sendResponse(HttpExchange exchange, String response,int code) throws IOException {
+        exchange.getResponseHeaders().add("Accept", "application/json");
+        exchange.getResponseHeaders().add("Content-Type", "application/json");
+        exchange.sendResponseHeaders(code, response.length());
+        try (OutputStream os = exchange.getResponseBody()) {
+            os.write(response.getBytes());
+        }
+    }
+
+    
 }

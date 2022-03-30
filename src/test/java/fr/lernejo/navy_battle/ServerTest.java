@@ -1,12 +1,10 @@
-package fr.lernejo.server;
+package fr.lernejo.navy_battle;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.net.http.HttpResponse;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class ServerTest {
 

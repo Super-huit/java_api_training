@@ -1,7 +1,5 @@
 package fr.lernejo.navy_battle;
 
-import fr.lernejo.server.Server;
-
 import java.io.IOException;
 
 public class Launcher {
