@@ -14,23 +14,27 @@ public class Server {
 
     public Server(int port, String url)
     {
+        // server + url
+        this.clt = null;
         this.port = port;
         this.url = url;
-        this.clt = null;
     }
 
     public Server(int port, String url,String servUrl)
     {
+        // server + url + servurl
         this.port = port;
-        this.url = url;
         this.clt = new Client(port,servUrl);
+        this.url = url;
     }
 
     public Client getClt() {
+        // Get clt
         return clt;
     }
 
     public boolean init() throws IOException {
+        // Init serv
         HttpServer server = HttpServer.create(new InetSocketAddress(this.url, this.port), 0);
         server.setExecutor(Executors.newFixedThreadPool(1));
         server.createContext("/ping", new PingHttpHandler());

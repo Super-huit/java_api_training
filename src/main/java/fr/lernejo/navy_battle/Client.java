@@ -7,23 +7,28 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class Client {
+    // Client
     public final HttpClient client;
     final int port;
     final String servUrl;
 
     public Client(int port, String url)
     {
+        // Const du client
         this.client = HttpClient.newHttpClient();
-        this.port = port;
         this.servUrl = url;
+        this.port = port;
+        
     }
 
     public int startGame() throws IOException, InterruptedException {
+
+        // Fonction permetant le commencement du jeu
         HttpRequest requetePost = HttpRequest.newBuilder()
             .uri(URI.create(this.servUrl + "/api/game/start"))
             .setHeader("Accept", "application/json")
             .setHeader("Content-Type", "application/json")
-            .POST(HttpRequest.BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"hello\"}"))
+            .POST(HttpRequest.BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"Bonjour_toi\"}"))
             .build();
         HttpResponse<String> resp = client.send(requetePost, HttpResponse.BodyHandlers.ofString());
         return resp.statusCode();

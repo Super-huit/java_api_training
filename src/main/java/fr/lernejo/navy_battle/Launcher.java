@@ -3,6 +3,7 @@ package fr.lernejo.navy_battle;
 import java.io.IOException;
 
 public class Launcher {
+    // Launcher Game
     public static void main(String[] args) throws IOException, InterruptedException {
         if (args.length == 1) {
             Server server = new Server(Integer.parseInt(args[0]), "localhost");

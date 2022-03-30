@@ -9,8 +9,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class PingHttpHandlerTest {
 
     @Test
@@ -22,7 +20,7 @@ class PingHttpHandlerTest {
             .uri(URI.create("http://localhost:9855/ping"))
             .setHeader("Accept", "application/json")
             .setHeader("Content-Type", "application/json")
-            .POST(HttpRequest.BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:6666\", \"message\":\"hello\"}"))
+            .POST(HttpRequest.BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:6666\", \"message\":\"Bonjour_toi\"}"))
             .build();
         HttpResponse res = client.send(request, HttpResponse.BodyHandlers.ofString());
         Assertions.assertEquals(200, res.statusCode());

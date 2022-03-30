@@ -16,6 +16,20 @@ class FireHttpHandlerTest {
     }
 
     @Test
+    void handlevalid() throws IOException, InterruptedException {
+        Server server = new Server(9915, "localhost");
+        server.init();
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create("http://localhost:9915/api/game/fire"))
+            .setHeader("Accept", "application/json")
+            .setHeader("Content-Type", "application/json")
+            .GET().build();
+        HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        Assertions.assertEquals(200, response.statusCode());
+    }
+
+    @Test
     void handleUnvalid() throws IOException, InterruptedException {
         Server server = new Server(9910, "localhost");
         server.init();
@@ -29,19 +43,5 @@ class FireHttpHandlerTest {
 
         HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
         Assertions.assertEquals(400, response.statusCode());
-    }
-
-    @Test
-    void handlevalid() throws IOException, InterruptedException {
-        Server server = new Server(9915, "localhost");
-        server.init();
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create("http://localhost:9915/api/game/fire"))
-            .setHeader("Accept", "application/json")
-            .setHeader("Content-Type", "application/json")
-            .GET().build();
-        HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        Assertions.assertEquals(200, response.statusCode());
     }
 }
